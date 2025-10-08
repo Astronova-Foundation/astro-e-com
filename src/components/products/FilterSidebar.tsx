@@ -110,7 +110,7 @@ export function FilterSidebar({ categories, className, basePath = '/products' }:
             <SelectItem value="all">All Categories</SelectItem>
             {categories.map((category) => (
               <SelectItem key={category.id} value={category.slug}>
-                {category.name} ({category._count.products})
+                {category.name} 
               </SelectItem>
             ))}
           </SelectContent>

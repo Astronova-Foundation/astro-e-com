@@ -106,7 +106,7 @@ export function WishlistPageClient() {
       </div>
 
       {/* Wishlist Grid */}
-      <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4 md:gap-6">
+      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-1 md:gap-4">
         {displayWishlist.map((product) => (
           <ProductCard key={product.id} product={product} />
         ))}
@@ -114,7 +114,7 @@ export function WishlistPageClient() {
 
       {/* Actions */}
       <div className="mt-8 flex justify-center">
-        <Button variant="outline" asChild>
+        <Button asChild>
           <Link href="/products">
             Continue Shopping
           </Link>
