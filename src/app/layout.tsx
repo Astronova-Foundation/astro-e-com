@@ -11,7 +11,7 @@ const inter = Inter({
 export const metadata: Metadata = {
   title: "Astro E-commerce - Mobile First Shopping",
   description: "Modern e-commerce platform optimized for mobile shopping with Cash on Delivery",
-  keywords: ["e-commerce", "mobile shopping", "Nepal", "COD", "online store"],
+  keywords: ["e-commerce", "mobile shopping", "Nepal", "COD", "online store","STREAM","CAMPAIGN"],
   authors: [{ name: "Astro E-commerce Team" }],
   creator: "Astro E-commerce",
   publisher: "Astro E-commerce",
