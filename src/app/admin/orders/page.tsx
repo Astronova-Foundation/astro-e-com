@@ -1,7 +1,7 @@
 'use client'
 
 import { useState, useEffect } from 'react'
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
+import { Card, CardContent } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select'
 import { Badge } from '@/components/ui/badge'
@@ -255,8 +255,8 @@ export default function AdminOrdersPage() {
                         </td>
                         <td className="p-4">
                           <Link href={`/admin/orders/${order.id}`}>
-                            <Button size="sm" variant="outline">
-                              <Eye className="h-4 w-4" />
+                            <Button size="sm" >
+                              <Eye className="h-4 w-4 text-white" />
                             </Button>
                           </Link>
                         </td>

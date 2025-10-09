@@ -50,7 +50,7 @@ export function AdminSidebar({ className }: AdminSidebarProps) {
       <div className="flex h-16 items-center border-b border-blue-800 px-6">
         <Link href="/admin" className="flex items-center space-x-2">
           <Home className="h-6 w-6 text-blue-200" />
-          <span className="text-lg font-semibold text-white">Astro E-com Admin</span>
+          <span className="text-lg font-semibold text-white">Astro Admin</span>
         </Link>
       </div>
 

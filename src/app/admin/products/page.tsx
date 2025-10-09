@@ -153,9 +153,7 @@ export default function AdminProductsPage() {
 
       {/* Products Table */}
       <Card>
-        <CardHeader>
-          <CardTitle>Products ({pagination.total})</CardTitle>
-        </CardHeader>
+
         <CardContent>
           <ProductsTable products={products as any} pagination={pagination as any} filters={filters} loading={loading} />
         </CardContent>

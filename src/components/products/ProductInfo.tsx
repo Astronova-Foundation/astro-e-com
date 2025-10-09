@@ -12,6 +12,7 @@ import { useRouter } from 'next/navigation'
 import { toast } from 'sonner'
 import { cn } from '@/lib/utils'
 import { useSession } from 'next-auth/react'
+import { Textarea } from '../ui/textarea'
 
 interface ProductInfoProps {
   product: ProductWithDetails
@@ -252,9 +253,7 @@ export function ProductInfo({ product, className }: ProductInfoProps) {
             </div>
           </CollapsibleTrigger>
           <CollapsibleContent className="pt-3 pb-1">
-            <p className="text-gray-600 leading-relaxed">
-              {product.description}
-            </p>
+                <textarea className="w-full !min-h-[300px] border-none" value={product.description} disabled={true} readOnly={true} />
           </CollapsibleContent>
         </Collapsible>
       )}

@@ -293,9 +293,6 @@ export function CategoriesManagement() {
 
       {/* Categories Grid */}
       <Card>
-        <CardHeader>
-          <CardTitle>All Categories ({filteredCategories.length})</CardTitle>
-        </CardHeader>
         <CardContent>
           {filteredCategories.length === 0 ? (
             <div className="text-center py-8">

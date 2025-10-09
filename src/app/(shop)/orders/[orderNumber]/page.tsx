@@ -318,7 +318,7 @@ export default function OrderPage({ params }: OrderPageProps) {
                 <span>Shipping</span>
                 <span>
                   {order.shippingCost === 0 ? (
-                    <span className="text-green-600 font-medium">Free</span>
+                    <span className="font-light">Seller will contact you</span>
                   ) : (
                     <span className="npr-currency">{formatCurrency(order.shippingCost)}</span>
                   )}

@@ -183,9 +183,7 @@ export default function AdminUsersPage() {
 
       {/* Users Table */}
       <Card>
-        <CardHeader>
-          <CardTitle>Users ({pagination.total})</CardTitle>
-        </CardHeader>
+  
         <CardContent>
           {loading ? (
             <LoadingSpinner message="Loading users..." className="py-8" />
