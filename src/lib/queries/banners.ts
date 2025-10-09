@@ -1,10 +1,12 @@
 import { prisma } from '@/lib/prisma'
 import { CreateBannerData, UpdateBannerData, BannerKanbanItem, CarouselBanner, BannerPositionUpdate } from '@/types'
+import { unstable_noStore as noStore } from 'next/cache'
 
 /**
  * Get all banners for admin management with position-based sorting
  */
 export async function getAdminBanners(): Promise<BannerKanbanItem[]> {
+  noStore()
   try {
     const banners = await prisma.banner.findMany({
 
@@ -33,6 +35,7 @@ export async function getAdminBanners(): Promise<BannerKanbanItem[]> {
  * Get active banners for storefront carousel
  */
 export async function getActiveBanners(): Promise<CarouselBanner[]> {
+  noStore()
   try {
     const banners = await prisma.banner.findMany({
     where: {
@@ -247,6 +250,7 @@ export async function toggleBannerStatus(id: string): Promise<BannerKanbanItem> 
  * Get single banner by ID
  */
 export async function getBannerById(id: string): Promise<BannerKanbanItem | null> {
+  noStore()
   try {
     const banner = await prisma.banner.findFirst({
       where: {

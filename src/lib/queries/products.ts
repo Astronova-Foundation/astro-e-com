@@ -1,7 +1,7 @@
 import { prisma } from '@/lib/prisma'
 import { withErrorHandling } from '@/lib/error-handling'
 import { ProductWithDetails, ProductFilters, PaginatedResponse, OptimizedCategory } from '@/types'
-
+import { unstable_noStore as noStore} from 'next/cache'
 // Helper function to generate search variations (including pluralization)
 function generateSearchVariations(term: string): string[] {
   const variations = [term.toLowerCase()]
@@ -69,6 +69,7 @@ function generateSearchVariations(term: string): string[] {
 }
 
 export async function getProducts(filters: ProductFilters = {}): Promise<PaginatedResponse<ProductWithDetails>> {
+  noStore()
   const {
     category,
     minPrice,
@@ -289,6 +290,7 @@ export async function getProducts(filters: ProductFilters = {}): Promise<Paginat
 }
 
 export async function getProductBySlug(slug: string): Promise<ProductWithDetails | null> {
+  noStore()
   try {
     // Decode URL-encoded slug to handle special characters
     const decodedSlug = decodeURIComponent(slug)
@@ -358,6 +360,7 @@ export async function getProductBySlug(slug: string): Promise<ProductWithDetails
 }
 
 export async function getCategories(): Promise<OptimizedCategory[]> {
+  noStore()
   return withErrorHandling(async () => {
     const categories = await prisma.category.findMany({
       where: {
@@ -385,6 +388,7 @@ export async function getCategories(): Promise<OptimizedCategory[]> {
 }
 
 export async function getFeaturedProducts(limit: number = 8): Promise<ProductWithDetails[]> {
+  noStore()
   try {
     const products = await prisma.product.findMany({
       where: {
@@ -464,6 +468,7 @@ export async function getFeaturedProducts(limit: number = 8): Promise<ProductWit
 }
 
 export async function getProductsByIds(ids: string[]): Promise<ProductWithDetails[]> {
+  noStore()
   try {
     if (!ids || ids.length === 0) {
       return []
@@ -533,6 +538,7 @@ export async function getProductsByIds(ids: string[]): Promise<ProductWithDetail
 }
 
 export async function getRelatedProducts(productId: string, categoryId: string, limit: number = 4): Promise<ProductWithDetails[]> {
+  noStore()
   try {
     const products = await prisma.product.findMany({
       where: {

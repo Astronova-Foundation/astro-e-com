@@ -22,7 +22,7 @@ export default async function HomePage() {
       <main>
         {/* Hero/Banner Section */}
         {banners.length > 0 ? (
-          <section className="relative mb-8">
+          <section className="relative mb-6">
             <div className="container mx-auto px-4 mt-2 ">
 
                 <BannerCarousel banners={banners} />

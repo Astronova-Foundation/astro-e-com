@@ -78,7 +78,7 @@ export function BannerCarousel({
       >
         {banners.map((banner) => (
           <SwiperSlide key={banner.id}>
-            <div className="aspect-[16/6] md:aspect-[21/8] lg:aspect-[21/10] w-full">
+            <div className="aspect-[21/10] w-full">
               <BannerSlide banner={banner} />
             </div>
           </SwiperSlide>

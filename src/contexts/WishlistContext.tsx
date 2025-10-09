@@ -4,7 +4,7 @@ import React, { createContext, useContext, useEffect, useState, ReactNode } from
 import { useSession } from 'next-auth/react'
 import { ProductWithDetails } from '@/types'
 import { guestWishlist } from '@/lib/queries/wishlist'
-import { toast } from 'sonner'
+
 
 interface WishlistContextType {
   wishlist: ProductWithDetails[]
@@ -18,6 +18,7 @@ interface WishlistContextType {
   clearWishlist: () => Promise<boolean>
   syncGuestWishlist: () => Promise<void>
   refreshWishlist: () => Promise<void>
+  refreshWishlistCount: () => Promise<void>
 }
 
 const WishlistContext = createContext<WishlistContextType | undefined>(undefined)
@@ -230,6 +231,7 @@ export function WishlistProvider({ children, initialWishlist = [] }: Omit<Wishli
     clearWishlist,
     syncGuestWishlist,
     refreshWishlist: fetchUserWishlist,
+    refreshWishlistCount: fetchWishlistCount
   }
 
   return (

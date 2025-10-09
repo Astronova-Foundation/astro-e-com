@@ -18,7 +18,6 @@ import { useRouter } from 'next/navigation'
 import { useWishlist } from '@/contexts/WishlistContext'
 import { NotificationDropdown } from '@/components/layout/NotificationDropdown'
 import { CartIcon } from '@/components/cart/CartIcon'
-import { NotificationsSheet } from '@/components/header/NotificationsSheet'
 import Image from 'next/image'
 import { signOut } from 'next-auth/react'
 

@@ -43,7 +43,7 @@ export function CategoryGrid({ categories, className }: CategoryGridProps) {
   return (
 <div
   className={cn(
-    'flex flex-row gap-4 overflow-x-auto no-scrollbar px-2 py-4',
+    'flex flex-row gap-4 overflow-x-auto scrollbar-hide px-2 py-4',
     className
   )}
 >
