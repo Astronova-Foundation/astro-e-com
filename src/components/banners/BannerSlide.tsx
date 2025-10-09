@@ -2,24 +2,15 @@
 
 import Image from 'next/image'
 import { CarouselBanner } from '@/types'
-
+import { useRouter } from 'next/router'
 interface BannerSlideProps {
   banner: CarouselBanner
   className?: string
 }
 
 export function BannerSlide({ banner, className = '' }: BannerSlideProps) {
-  const handleClick = () => {
-    const url = banner.redirectUrl || '#'
-    // Open in new tab for external links, same tab for internal links
-    const isExternal = url.startsWith('http') && !url.includes(window.location.hostname)
-
-    if (isExternal) {
-      window.open(url, '_blank', 'noopener,noreferrer')
-    } else if (url !== '#') {
-      window.location.href = url
-    }
-  }
+  const router= useRouter();
+  const handleClick = () => router.push(banner.redirectUrl)
 
   return (
     <div 

@@ -188,7 +188,7 @@ export function CategoriesManagement() {
   return (
     <div className="space-y-6">
       {/* Header Actions */}
-      <div className="flex justify-between items-center w-full">
+      <div className="flex justify-between items-center w-full p-2">
         <div className="flex items-center space-x-4 w-full">
           <div className="relative w-full">
             <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-muted-foreground" />

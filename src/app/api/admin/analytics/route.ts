@@ -31,7 +31,11 @@ export async function GET(request: NextRequest) {
       deliveredOrders
     ] = await Promise.all([
       // Total users
-      prisma.user.count(),
+      prisma.user.count({
+        where: { 
+          emailVerified: true
+         }
+      }),
 
       // Total products
       prisma.product.count({
@@ -50,6 +54,7 @@ export async function GET(request: NextRequest) {
       // New users in period
       prisma.user.count({
         where: {
+          emailVerified: true,
           createdAt: { gte: startDate }
         }
       }),
@@ -87,6 +92,11 @@ export async function GET(request: NextRequest) {
 
     // Top selling products
     const topProducts = await prisma.orderItem.groupBy({
+      where:{
+        order:{
+          status: OrderStatus.DELIVERED
+        }
+      },
       by: ['productId'],
       _sum: { quantity: true },
       _avg: { price: true },

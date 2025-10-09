@@ -14,7 +14,6 @@ import 'swiper/css/navigation'
 import 'swiper/css/pagination'
 import 'swiper/css/autoplay'
 
-
 interface BannerCarouselProps {
   banners: CarouselBanner[]
   autoPlay?: boolean
@@ -29,14 +28,12 @@ export function BannerCarousel({
   autoPlay = true,
   autoPlayInterval = 5000,
   showControls = true,
+  showDots = true,
   className = ''
 }: BannerCarouselProps) {
   const [swiperInstance, setSwiperInstance] = useState<SwiperType | null>(null)
 
-
-  if (banners.length === 0) {
-    return null
-  }
+  if (!banners || banners.length === 0) return null
 
   if (banners.length === 1) {
     return (
@@ -56,24 +53,31 @@ export function BannerCarousel({
         slidesPerView={1}
         onSwiper={setSwiperInstance}
         navigation={false}
-        pagination={{
-          clickable: true,
-          renderBullet: function (index, className) {
-            return `<span class="${className} !w-3 !h-3 !bg-white/70 hover:!bg-white !transition-all !duration-300"></span>`
-          },
-        }}
-        autoplay={autoPlay ? {
-          delay: autoPlayInterval,
-          disableOnInteraction: false,
-        } : false}
+        pagination={
+          showDots
+            ? {
+                clickable: true,
+                // add our extra class so we can target it specifically
+                renderBullet: (index, className) =>
+                  `<span class="${className} custom-bullet"></span>`,
+              }
+            : false
+        }
+        autoplay={
+          autoPlay
+            ? {
+                delay: autoPlayInterval,
+                disableOnInteraction: false,
+              }
+            : false
+        }
         loop={banners.length > 1}
         speed={700}
         effect="slide"
         className="w-full rounded-xl overflow-hidden"
         style={{
-          '--swiper-navigation-color': '#ffffff',
-          '--swiper-pagination-color': '#ffffff',
-          '--swiper-pagination-bullet-inactive-color': 'rgba(255, 255, 255, 0.5)',
+          // Keep navigation arrow color variable if you use default arrows somewhere
+          '--swiper-navigation-color': '#2563eb',
         } as any}
       >
         {banners.map((banner) => (
@@ -105,6 +109,40 @@ export function BannerCarousel({
           </button>
         </>
       )}
+
+      {/* Pagination bullets CSS override */}
+      <style jsx global>{`
+        /* base size & spacing for bullets */
+        .custom-bullet {
+          width: 0.625rem; /* 10px */
+          height: 0.625rem;
+          display: inline-block;
+          border-radius: 9999px;
+          margin: 0 6px;
+          background-color: rgba(37, 99, 235, 0.18); /* light variant for inactive */
+          opacity: 1; /* ensure visible */
+          transform: scale(1);
+          transition: transform 180ms ease, background-color 180ms ease, box-shadow 180ms ease;
+          box-shadow: none;
+        }
+
+        /* active bullet */
+        .swiper-pagination-bullet.swiper-pagination-bullet-active.custom-bullet {
+          background-color: #2563eb !important; /* your requested color */
+          transform: scale(1.25);
+          box-shadow: 0 6px 18px rgba(37, 99, 235, 0.18);
+        }
+
+        /* make bullets clickable & ensure they're on top */
+        .swiper-pagination {
+          z-index: 20;
+        }
+
+        /* tweak pagination container position if needed */
+        .swiper-pagination-bullets {
+          bottom: 12px;
+        }
+      `}</style>
     </div>
   )
 }

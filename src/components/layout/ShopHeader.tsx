@@ -107,7 +107,6 @@ export function ShopHeader() {
     return () => document.removeEventListener('mousedown', handleClickOutside)
   }, [])
 
-  // ✅ Extracted suggestions UI (to reuse in desktop + mobile)
   const SuggestionsDropdown = () => (
     showSuggestions && (
       <div className="absolute top-full left-0 right-0 mt-1 bg-white border border-gray-200 rounded-xl shadow-lg z-50 overflow-hidden">
@@ -245,7 +244,6 @@ export function ShopHeader() {
             </form>
           </div>
         </div>
-
         {/* Desktop Layout */}
         <div className="hidden lg:flex h-16 items-center justify-between gap-4">
           <Link href="/" className="flex items-center space-x-3">
@@ -275,7 +273,7 @@ export function ShopHeader() {
             <Button variant="ghost" size="icon" className="h-10 w-10 relative" onClick={() => router.push('/wishlist')}>
               <Heart className="h-5 w-5" />
               {wishlistCount > 0 && (
-                <Badge className="absolute -top-1 -right-1 h-5 w-5 text-xs p-0 bg-red-500 text-white font-normal rounded-full border-2 border-white">
+                <Badge className="absolute -top-1 -right-1 h-5 w-5 text-xs p-0 flex items-center justify-center bg-red-500 text-white text-center font-normal rounded-full border-2 border-white">
                   {wishlistCount > 99 ? '99+' : wishlistCount}
                 </Badge>
               )}

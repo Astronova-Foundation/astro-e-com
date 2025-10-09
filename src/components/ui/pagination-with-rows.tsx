@@ -75,13 +75,14 @@ export function PaginationWithRows({
               ))}
             </SelectContent>
           </Select>
-        </div>
-
-        {/* Center: Page info */}
+        
         <div className="text-sm text-muted-foreground text-center">
           Showing {startItem} to {endItem} of {totalItems} entries
         </div>
 
+        </div>
+
+     
         {/* Right: Pagination controls */}
         <div className="flex items-center gap-1">
           <Button
