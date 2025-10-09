@@ -2,7 +2,7 @@
 
 import Image from 'next/image'
 import { CarouselBanner } from '@/types'
-import { useRouter } from 'next/router'
+import { useRouter } from 'next/navigation'
 interface BannerSlideProps {
   banner: CarouselBanner
   className?: string
