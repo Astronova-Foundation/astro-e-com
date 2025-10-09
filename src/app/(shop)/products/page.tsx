@@ -75,10 +75,10 @@ export default async function ProductsPage({ searchParams }: ProductsPageProps) 
   const { data: products = [], pagination } = productsResult
 
   return (
-    <div className="min-h-screen ">
-      <div className="container mx-auto px-4 py-8">
+    <div className="min-h-screen">
+      <div className="container mx-auto px-4 py-2">
         {/* Breadcrumb */}
-        <nav className="mb-8">
+        <nav className="">
           <ol className="flex items-center space-x-2 text-sm text-gray-500  px-4 py-3 ">
             <li>
               <Link href="/" className="hover:text-astro-primary transition-colors">

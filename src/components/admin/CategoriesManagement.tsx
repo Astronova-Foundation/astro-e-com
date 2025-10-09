@@ -188,15 +188,15 @@ export function CategoriesManagement() {
   return (
     <div className="space-y-6">
       {/* Header Actions */}
-      <div className="flex justify-between items-center">
-        <div className="flex items-center space-x-4">
-          <div className="relative">
+      <div className="flex justify-between items-center w-full">
+        <div className="flex items-center space-x-4 w-full">
+          <div className="relative w-full">
             <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-muted-foreground" />
             <Input
               placeholder="Search categories..."
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
-              className="pl-10 w-64"
+              className="pl-10 flex-1"
             />
           </div>
         </div>
@@ -293,6 +293,9 @@ export function CategoriesManagement() {
 
       {/* Categories Grid */}
       <Card>
+        <CardHeader>
+
+        </CardHeader>
         <CardContent>
           {filteredCategories.length === 0 ? (
             <div className="text-center py-8">
